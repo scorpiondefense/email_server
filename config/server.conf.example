@@ -1,0 +1,174 @@
+# Email Server Configuration File
+# ================================
+#
+# Copy this file to /etc/email_server/server.conf and modify as needed.
+#
+
+# ----------------------------------------------------------------------------
+# TLS/SSL Configuration
+# ----------------------------------------------------------------------------
+[tls]
+# Path to the SSL certificate file (PEM format)
+certificate = /etc/ssl/email_server/server.crt
+
+# Path to the SSL private key file (PEM format)
+private_key = /etc/ssl/email_server/server.key
+
+# Path to the CA certificate file (optional, for client verification)
+# ca_file = /etc/ssl/email_server/ca.crt
+
+# Cipher suite to use (optional, uses secure defaults if not specified)
+# ciphers = HIGH:!aNULL:!MD5:!RC4
+
+# Verify client certificates (default: false)
+verify_client = false
+
+# ----------------------------------------------------------------------------
+# Database Configuration
+# ----------------------------------------------------------------------------
+[database]
+# Path to the SQLite database file for user authentication
+path = /var/lib/email_server/users.db
+
+# Connection pool size (optional)
+# pool_size = 10
+
+# ----------------------------------------------------------------------------
+# Storage Configuration
+# ----------------------------------------------------------------------------
+[storage]
+# Root directory for Maildir storage
+maildir_root = /var/mail
+
+# Default quota for new users in bytes (100 MB)
+default_quota = 104857600
+
+# Automatically create directories if they don't exist
+create_directories = true
+
+# ----------------------------------------------------------------------------
+# Logging Configuration
+# ----------------------------------------------------------------------------
+[log]
+# Log level: trace, debug, info, warning, error, fatal
+level = info
+
+# Log to console
+console = true
+
+# Log file path (leave empty to disable file logging)
+file = /var/log/email_server/server.log
+
+# Maximum log file size before rotation (10 MB)
+max_file_size = 10485760
+
+# Number of rotated log files to keep
+max_files = 5
+
+# ----------------------------------------------------------------------------
+# SMTP Server Configuration
+# ----------------------------------------------------------------------------
+[smtp]
+# Bind address (0.0.0.0 for all interfaces)
+bind_address = 0.0.0.0
+
+# SMTP port (standard: 25)
+port = 25
+
+# SMTPS port (implicit TLS, standard: 465)
+tls_port = 465
+
+# Server hostname (used in EHLO/HELO responses)
+hostname = mail.example.com
+
+# Maximum number of concurrent connections
+max_connections = 1000
+
+# Thread pool size
+thread_pool_size = 4
+
+# Maximum message size in bytes (25 MB)
+max_message_size = 26214400
+
+# Maximum recipients per message
+max_recipients = 100
+
+# Require authentication for sending mail
+require_auth = true
+
+# Enable STARTTLS
+enable_starttls = true
+
+# Allow relaying for authenticated users
+allow_relay = false
+
+# Local domains (comma-separated)
+local_domains = example.com, mail.example.com
+
+# Connection timeout in seconds
+connection_timeout = 300
+
+# Idle timeout in seconds
+idle_timeout = 600
+
+# ----------------------------------------------------------------------------
+# POP3 Server Configuration
+# ----------------------------------------------------------------------------
+[pop3]
+# Bind address
+bind_address = 0.0.0.0
+
+# POP3 port (standard: 110)
+port = 110
+
+# POP3S port (implicit TLS, standard: 995)
+tls_port = 995
+
+# Maximum concurrent connections
+max_connections = 500
+
+# Thread pool size
+thread_pool_size = 2
+
+# Enable STARTTLS
+enable_starttls = true
+
+# Connection timeout in seconds
+connection_timeout = 300
+
+# Idle timeout in seconds
+idle_timeout = 600
+
+# ----------------------------------------------------------------------------
+# IMAP Server Configuration
+# ----------------------------------------------------------------------------
+[imap]
+# Bind address
+bind_address = 0.0.0.0
+
+# IMAP port (standard: 143)
+port = 143
+
+# IMAPS port (implicit TLS, standard: 993)
+tls_port = 993
+
+# Maximum concurrent connections
+max_connections = 500
+
+# Thread pool size
+thread_pool_size = 4
+
+# Enable STARTTLS
+enable_starttls = true
+
+# Maximum search results
+max_search_results = 1000
+
+# Enable IDLE command
+enable_idle = true
+
+# Connection timeout in seconds
+connection_timeout = 300
+
+# Idle timeout in seconds
+idle_timeout = 1800

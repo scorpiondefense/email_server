@@ -1,0 +1,129 @@
+# Build directories
+build/
+cmake-build-*/
+out/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+CTestTestfile.cmake
+Testing/
+_deps/
+
+# Compiled binaries
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.cproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Generated certificates (for testing)
+certs/
+*.pem
+*.crt
+*.key
+*.csr
+*.srl
+
+# Database files
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Log files
+*.log
+logs/
+
+# Runtime data
+*.pid
+*.sock
+
+# Test output
+Testing/
+test_results/
+coverage/
+*.gcno
+*.gcda
+*.gcov
+
+# Package files
+*.tar.gz
+*.zip
+*.deb
+*.rpm
+
+# Maildir test data
+/var/
+maildir_test/
+
+# Configuration with secrets
+server.conf
+!server.conf.example
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Catch2 fetched content
+_deps/
+
+# ccache
+.ccache/
+
+# Conan
+conan.lock
+conanbuildinfo.*
+conaninfo.txt
+graph_info.json
+
+# vcpkg
+vcpkg_installed/
+
+# Docker
+.env
+!.env.example
+docker-compose.override.yml
+
+# Webmail (Next.js)
+webmail/node_modules/
+webmail/.next/
+webmail/out/
+webmail/.env.local
+webmail/npm-debug.log*
