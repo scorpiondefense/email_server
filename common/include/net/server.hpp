@@ -8,6 +8,7 @@
 #include <functional>
 #include <set>
 #include <mutex>
+#include <type_traits>
 #include <boost/asio.hpp>
 #ifdef ENABLE_TLS
 #include <boost/asio/ssl.hpp>
@@ -215,7 +216,13 @@ std::shared_ptr<SessionType> Server<SessionType>::create_session(
     if (session_factory_) {
         return session_factory_(io_ctx, std::move(socket), nullptr);
     }
-    return std::make_shared<SessionType>(io_ctx, std::move(socket));
+    if constexpr (std::is_constructible_v<SessionType, asio::io_context&, tcp::socket>) {
+        return std::make_shared<SessionType>(io_ctx, std::move(socket));
+    } else {
+        // SessionType requires additional constructor arguments;
+        // use set_session_factory() to provide a custom factory.
+        return nullptr;
+    }
 }
 
 #ifdef ENABLE_TLS
@@ -225,7 +232,13 @@ std::shared_ptr<SessionType> Server<SessionType>::create_tls_session(
     if (session_factory_) {
         return session_factory_(io_ctx, std::move(socket), &ssl_ctx);
     }
-    return std::make_shared<SessionType>(io_ctx, std::move(socket), ssl_ctx);
+    if constexpr (std::is_constructible_v<SessionType, asio::io_context&, tcp::socket, ssl::context&>) {
+        return std::make_shared<SessionType>(io_ctx, std::move(socket), ssl_ctx);
+    } else {
+        // SessionType requires additional constructor arguments;
+        // use set_session_factory() to provide a custom factory.
+        return nullptr;
+    }
 }
 #endif
 

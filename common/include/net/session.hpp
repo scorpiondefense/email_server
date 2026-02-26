@@ -55,6 +55,10 @@ public:
     const std::string& username() const { return username_; }
     const std::string& domain() const { return domain_; }
 
+    void set_authenticated(bool auth) { authenticated_ = auth; }
+    void set_username(const std::string& user) { username_ = user; }
+    void set_domain(const std::string& dom) { domain_ = dom; }
+
 #ifdef ENABLE_TLS
     void start_tls(ssl::context& ssl_ctx);
 #endif
@@ -69,10 +73,6 @@ protected:
 
     void do_read();
     void do_write();
-
-    void set_authenticated(bool auth) { authenticated_ = auth; }
-    void set_username(const std::string& user) { username_ = user; }
-    void set_domain(const std::string& dom) { domain_ = dom; }
 
     void close_socket();
 

@@ -78,7 +78,6 @@ public:
 
     // Authentication
     Authenticator& authenticator() { return *auth_; }
-    bool is_authenticated() const override { return Session::is_authenticated(); }
     bool require_auth() const { return require_auth_; }
     void set_require_auth(bool require) { require_auth_ = require; }
 
