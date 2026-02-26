@@ -17,7 +17,7 @@ interface EmailViewProps {
   loading?: boolean;
 }
 
-function formatFullDate(date: Date): string {
+function formatFullDate(date: Date | string): string {
   return new Date(date).toLocaleDateString([], {
     weekday: 'long',
     year: 'numeric',

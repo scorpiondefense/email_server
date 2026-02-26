@@ -12,7 +12,7 @@ interface EmailListProps {
   loading?: boolean;
 }
 
-function formatDate(date: Date): string {
+function formatDate(date: Date | string): string {
   const now = new Date();
   const emailDate = new Date(date);
   const diffDays = Math.floor((now.getTime() - emailDate.getTime()) / (1000 * 60 * 60 * 24));
