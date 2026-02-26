@@ -313,19 +313,19 @@ function parsedMailToEmail(parsed: ParsedMail, folder: string, uid: number): Ema
 
   const toAddresses: EmailAddress[] = parsed.to
     ? (Array.isArray(parsed.to) ? parsed.to : [parsed.to]).flatMap((t) =>
-        t.value.map((addr) => ({ name: addr.name, address: addr.address || '' }))
+        t.value.map((addr: { name?: string; address?: string }) => ({ name: addr.name, address: addr.address || '' }))
       )
     : [];
 
   const ccAddresses: EmailAddress[] = parsed.cc
     ? (Array.isArray(parsed.cc) ? parsed.cc : [parsed.cc]).flatMap((t) =>
-        t.value.map((addr) => ({ name: addr.name, address: addr.address || '' }))
+        t.value.map((addr: { name?: string; address?: string }) => ({ name: addr.name, address: addr.address || '' }))
       )
     : [];
 
   const replyToAddresses: EmailAddress[] = parsed.replyTo
     ? (Array.isArray(parsed.replyTo) ? parsed.replyTo : [parsed.replyTo]).flatMap((t) =>
-        t.value.map((addr) => ({ name: addr.name, address: addr.address || '' }))
+        t.value.map((addr: { name?: string; address?: string }) => ({ name: addr.name, address: addr.address || '' }))
       )
     : [];
 
