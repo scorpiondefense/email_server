@@ -270,7 +270,7 @@ export async function getEmail(
 
         fetch.on('message', (msg) => {
           msg.on('body', (stream) => {
-            simpleParser(stream, (parseErr, parsed) => {
+            simpleParser(stream as unknown as import('stream').Readable, (parseErr, parsed) => {
               if (parseErr) {
                 console.error('Parse error:', parseErr);
                 return;
