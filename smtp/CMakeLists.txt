@@ -32,6 +32,11 @@ target_link_libraries(smtp_server PRIVATE
     Threads::Threads
 )
 
+# Link libresolv on Linux for DNS MX lookups (ns_initparse, ns_parserr)
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    target_link_libraries(smtp_server PRIVATE resolv)
+endif()
+
 install(TARGETS smtp_server
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
