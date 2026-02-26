@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
 
     // Handle attachments
     const attachments: File[] = [];
-    for (const [key, value] of formData.entries()) {
+    for (const [key, value] of Array.from(formData.entries())) {
       if (key.startsWith('attachment') && value instanceof File) {
         attachments.push(value);
       }
