@@ -32,8 +32,8 @@ target_link_libraries(smtp_server PRIVATE
     Threads::Threads
 )
 
-# Link libresolv on Linux for DNS MX lookups (ns_initparse, ns_parserr)
-if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+# Link libresolv for DNS MX lookups (ns_initparse, ns_parserr)
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux" OR CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     target_link_libraries(smtp_server PRIVATE resolv)
 endif()
 

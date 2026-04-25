@@ -3,11 +3,11 @@
 
 function(find_dependencies)
     # Boost (Asio for async I/O)
-    find_package(Boost 1.74 REQUIRED COMPONENTS system)
+    # Note: Boost.System is header-only since 1.69, so no COMPONENTS needed
+    find_package(Boost 1.74 REQUIRED)
     if(Boost_FOUND)
         message(STATUS "Found Boost ${Boost_VERSION}")
         message(STATUS "  Include: ${Boost_INCLUDE_DIRS}")
-        message(STATUS "  Libraries: ${Boost_LIBRARIES}")
     else()
         message(FATAL_ERROR "Boost >= 1.74 is required. Install with: apt install libboost-all-dev")
     endif()
